@@ -15,9 +15,9 @@ let requiredRange1 = [null, 200];
 let requiredRange2 = [100, 350];
 let requiredRange3 = [200, null];
 
-console.log(sortArray(findMatchesByCost(requiredRange1)));
-console.log(sortArray(findMatchesByCost(requiredRange2)));
-console.log(sortArray(findMatchesByCost(requiredRange3)));
+console.dir(sortArray(findMatchesByCost(requiredRange1)));
+console.dir(sortArray(findMatchesByCost(requiredRange2)));
+console.dir(sortArray(findMatchesByCost(requiredRange3)));
 
 /*Немного запутался в условии, но сделаю так. Пользователю подходит
 любой курс, у которого есть любые пересечения с указанным диапазоном, то есть,
@@ -28,10 +28,10 @@ console.log(sortArray(findMatchesByCost(requiredRange3)));
 function findMatchesByCost(cash) {
   return courses.filter((el) => {
     if (el.prices[0] || el.prices[1]) {
-      let minPrice = Number(el.prices[0]);
-      let maxPrice = Number(el.prices[1]) ?? Infinity;
-      let minCash = Number(cash[0]);
-      let maxCash = Number(cash[1]) ?? Infinity;
+      let minPrice = el.prices[0];
+      let maxPrice = el.prices[1] ?? Infinity;
+      let minCash = cash[0];
+      let maxCash = cash[1] ?? Infinity;
       return minCash <= maxPrice && maxCash >= minPrice
     }
   })
